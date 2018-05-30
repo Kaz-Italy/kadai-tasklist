@@ -48,10 +48,12 @@ class TasksController extends Controller
     {
         $this->validate($request, [
             'content' => 'required|max:191',
+            'status' => 'required|max:10',   // add
         ]);
         
         $task = new Task;
         $task->content = $request->content;
+        $task->status = $request->status;    // add
         $task->save();
 
         return redirect('/');
@@ -98,10 +100,19 @@ class TasksController extends Controller
     {
         $this->validate($request, [
             'content' => 'required|max:191',
+            'status' => 'required|max:10',   // add
         ]);
+        
+        //プルダウンメニュー
+        /*$this -> sample() {
+        $status_pulls = config('status_pull'),
+        return view('sample')->with(['status_pulls' => $status_pulls])
+        };*/
+        
         
         $task = Task::find($id);
         $task->content = $request->content;
+        $task->status = $request->status;    // add
         $task->save();
 
         return redirect('/');

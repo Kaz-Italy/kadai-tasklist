@@ -1,11 +1,11 @@
 @if (count($errors) > 0)
-   <!-- <ul>
+ 
+    <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
         
-    </ul>-->
+    </ul>
     
-    {!! '<p style="color: red;">入力して下さい</p>' !!}
     
 @endif
