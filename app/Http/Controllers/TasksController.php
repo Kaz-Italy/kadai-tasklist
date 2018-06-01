@@ -103,13 +103,6 @@ class TasksController extends Controller
             'status' => 'required|max:10',   // add
         ]);
         
-        //プルダウンメニュー
-        /*$this -> sample() {
-        $status_pulls = config('status_pull'),
-        return view('sample')->with(['status_pulls' => $status_pulls])
-        };*/
-        
-        
         $task = Task::find($id);
         $task->content = $request->content;
         $task->status = $request->status;    // add
