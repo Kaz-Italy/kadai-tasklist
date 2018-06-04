@@ -25,8 +25,8 @@
         </table>
     @endif
     
-    {!! link_to_route('tasks.create', 'タスクの新規作成', ['id' => $task->id], ['class' => 'btn btn-default']) !!}
-
+    {!! link_to_route('tasks.create', 'タスクの新規作成', null, ['class' => 'btn btn-default']) !!}
+ 
 
 @endsection
 
