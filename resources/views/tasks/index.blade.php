@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <h1>タスク一覧</h1>
+    <h1>{{$user->name}}さんのタスク一覧</h1>
+<!--<?php
+var_dump($user)
+?>-->
 
     @if (count($tasks) > 0)
         <table class="table table-striped">
@@ -27,6 +30,6 @@
     
     {!! link_to_route('tasks.create', 'タスクの新規作成', null, ['class' => 'btn btn-default']) !!}
  
-
+ 
 @endsection
 

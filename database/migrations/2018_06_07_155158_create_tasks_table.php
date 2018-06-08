@@ -4,30 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKadaiTasklist extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-     
-   /** public function up()
-    {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('content');    // content add column
-            $table->timestamps();
-        });
-    }*/
-    
-    
-       public function up()
+    public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');    // content add column
             $table->timestamps();
+            $table->integer('user_id')->unsigned()->index();
+            $table->string('content', 191);
+            $table->string('status', 10);
+            
+            // Foreign key constraint
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -38,6 +32,6 @@ class CreateKadaiTasklist extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasklists');
+        Schema::dropIfExists('tasks');
     }
 }

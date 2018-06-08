@@ -20,8 +20,8 @@
                         <option>実行中</option>
                         <option>完了</option>
                     </select>
-                <!--/.col-sm-10---></div>
-            <!--/form-group--></div>
+                </div>
+            </div>
                 
         
                 {!! Form::submit('更新', ['class' => 'btn btn-info']) !!}

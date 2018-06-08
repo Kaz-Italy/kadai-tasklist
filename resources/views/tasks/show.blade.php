@@ -2,11 +2,8 @@
 
 @section('content')
 
-    <h1>id = {{ $task->id }} タスク詳細ページ</h1>
-
-    <p>{{ $task->content }}</p>
-
-
+    <h1>タスク詳細ページ</h1>
+ 
         <table class="table table-bordered">
         <tr>
             <th>id</th>
@@ -24,7 +21,7 @@
     
      {!! link_to_route('tasks.edit', 'このタスクを編集', ['id' => $task->id], ['class' => 'btn btn-default']) !!}
      
-    {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
+    {!! Form::model($task, ['route' => ['tasks.destroy', 'id'=>$task->id], 'method' => 'delete']) !!}
         {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 
