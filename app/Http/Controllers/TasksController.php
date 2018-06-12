@@ -93,15 +93,32 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = Task::find($id);
-
-        return view('tasks.show', [
+            $task = Task::find($id);
+        
+        /*var_dump($task);
+        return;*/
+        
+            if ( $task == null){
+                
+                print"そんなタスクページはねぇ";
+                return redirect('/');
+            }
             
-            'task' => $task,
-/*            'id' => $task->id,
-            'content' => $task->content,
-            'status' => $task->status*/
-        ]);
+            elseif (\Auth::user()->id === $task->user_id) {
+                
+                return view('tasks.show', [
+                    'task' => $task,
+                    /*  'id' => $task->id,
+                    'content' => $task->content,
+                    'status' => $task->status*/
+                ]);
+                    
+        
+        }else {
+            return redirect('/');
+        }
+        
+            
     }
 
     /**
@@ -111,14 +128,19 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $task = Task::find($id);
+    {   
+        if (\Auth::user()->id === $task->user_id) {
+            $task = Task::find($id);
 
-        return view('tasks.edit', [
-            'task' => $task,
-            'status' => $task->status,
-        ]);
+            return view('tasks.edit', [
+                'task' => $task,
+                'status' => $task->status,
+            ]);
+        }else {
+                return redirect('/');
+        }
     }
+    
 
     /**
      * Update the specified resource in storage.

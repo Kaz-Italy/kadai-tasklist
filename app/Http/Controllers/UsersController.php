@@ -31,4 +31,6 @@ class UsersController extends Controller
 
         return view('tasks.index', $data);
     }
+    
+    
 }
